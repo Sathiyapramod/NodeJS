@@ -15,7 +15,10 @@ console.log(process.env.MONGO_URL);
 //middleware - intercept - converting body to json()
 //To avoid adding on every API, app.use() method declares it similar to globally
 app.use(express.json());
-const PORT = 4000;
+
+//Change the Port number to process.env.PORT
+//Port will be Auto Assignable
+const PORT = process.env.PORT;
 
 //Using Local Database
 // const MONGO_URL = "mongodb://127.0.0.1";
