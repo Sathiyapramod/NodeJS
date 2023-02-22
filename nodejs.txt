@@ -1,0 +1,146 @@
+NodeJS
+
+* It is an environment to run Javascript
+* Place to run Javascript
+
+In the front-end , there is BROWSER to run javascript language
+
+what BROWSER cannot do ? 
+
+1. cannot Delete
+2. cannot Create
+3. cannot update
+4. cannot read
+
+Is Javascript single or multi threaded ? - Single threaded & Asynchronous language
+
+Multi threaded - e.g., Java
+
+sync - step by step 
+async - similar to parallel, CONCURRENT behaviour to execute the code
+
+Stack:
+
+* FILO or LIFO
+
+Queue : * FIFO or LILO
+
+setTimeout is a part of Browser Code (web APIs)
+
+
+EVENT LOOP:
+
+
+1. Call Stack - 
+ * call stack knows only javascript
+ * it is also called as Main threaded
+ * all nested loops runs on call stacks
+
+2. Web APIs
+    * it knows how to wait and respond
+    e.g. setTimeout, setInterval, promises (fetch) , All the Event Listeners , 
+
+3. Call Queue 
+    * waiting in the queue while call stack is busy 
+
+4. EVENT loop 
+    - it always checks whether call stack is empty or not .
+    - it pushed from queue to stack once call back is empty. 
+
+
+Which GLobal variable makes sense only in the BROWSER ? 
+
+node JS - has 
+
+1. no DOM
+2. no document.
+3. no window object
+
+global variable inside nodeJS is 'global'
+
+17-02-2022
+
+
+NodeJS Bindings : Node API - in-built server kinda thing
+
+HOW TO SETUP ? 
+node install from Browser
+
+BUILDING a COMMANDLINE INSIDE NODE.js
+
+
+argv -> argument value;
+it is an array
+syntax : console.log(process.argv);
+
+inbuilt packages in nodeJS:
+
+OLDER SYNTAX in NodeJS
+module.exports.log
+module.exports.error
+module.exports.warning
+
+const {log,error,warning,info} = require('./')
+
+PACKAGES : 
+1. OS package
+
+Info on memory, CPU, etc.,
+it is an inbuilt package 
+
+2. fs package [File System]
+
+used for creat, update, delete and read files using package
+can create any type of file [word, html, css, image,video]
+
+A. WRITE file
+fs.writeFile(filename, data, (err)=>{
+    console.log("Completed writing");
+})
+
+
+1. filename
+2. data- content 
+3. callback - showing the message after complete operations
+
+
+B. READING file
+
+fs.readFile(filename,Encoding,(err,data)=>{
+    if(err)
+        console.log(err);
+    console.log(data);
+})
+
+
+C. Updateing file 
+
+fs.appendFile(filename, data, (err)=>{
+    console.log(message);
+})
+
+
+D. Delete files
+
+fs.unlink(filepath, (err)=>{
+    if(err)
+        console.log(err)
+    else
+        console.log(message)
+})
+
+
+
+EXPRESS:
+
+
+GET Method for getting the Data
+1. get() - to show content on the web page
+2. listen() - to start the app at the required PORT Number.
+
+
+nodemon is used for ready made refreshing 
+
+dotenv - hiding credentials 
+organising our node app 
+    - express.Router()
