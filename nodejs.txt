@@ -161,3 +161,7 @@ Connecting to an existing React-app:
 
 CORS package to install - https://www.npmjs.com/package/cors
 it allows to access data from other origin
+
+
+Authentication & Authorization:
+
