@@ -5,6 +5,8 @@ dotenv.config();
 import express from "express";
 //Inside the package.json file, change the "Type" : "module" instead of "commonjs"
 import { MongoClient } from "mongodb";
+import Router from "./router/movies.router.js";
+import cors from 'cors';
 
 const app = express();
 
@@ -15,6 +17,8 @@ console.log(process.env.MONGO_URL);
 //middleware - intercept - converting body to json()
 //To avoid adding on every API, app.use() method declares it similar to globally
 app.use(express.json());
+app.use("/movies", Router);
+app.use(cors());
 
 //Change the Port number to process.env.PORT
 //Port will be Auto Assignable
@@ -26,7 +30,7 @@ const PORT = process.env.PORT;
 //Using Atlas DB
 const MONGO_URL = process.env.MONGO_URL;
 
-const client = new MongoClient(MONGO_URL); // dial
+export const client = new MongoClient(MONGO_URL); // dial
 
 // Top level await
 await client.connect(); // call
@@ -49,8 +53,6 @@ app.get("/movies", async function (request, response) {
   response.send(movie);
 });
 
-app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
-
 app.get("/movies/:id", async function (request, response) {
   const { id } = request.params;
   const movie = await client
@@ -66,7 +68,6 @@ app.get("/movies/:id", async function (request, response) {
 });
 
 //Inserting a new Movie data to mongoDB
-
 //inbuilt-middleware - express.json();
 app.post("/movies", async function (request, response) {
   const movie = request.body;
@@ -111,3 +112,5 @@ app.put("/movies/:id", async (request, response) => {
     ? response.send({ message: "Movie updated successfully" })
     : response.status(404).send({ message: "Movie updated successfully" });
 });
+
+app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));

@@ -146,3 +146,18 @@ organising our node app
     - express.Router()
 
 
+Scaling and Extensability - Seggregation of Router and Service files in Express \
+
+
+1. Connecting to an existing React-app
+2. Connecting to a New React-App
+
+
+
+Connecting to an existing React-app:
+
+* CORS problem will be coming 
+
+
+CORS package to install - https://www.npmjs.com/package/cors
+it allows to access data from other origin
