@@ -1,5 +1,6 @@
 import express from "express";
 import { getAllMovies, getMovieById, createNewMovie, deleteMoviebyId, UpdateMovie } from "../service/movies.service.js";
+
 const router = express.Router();
 
 router.get("/", async function (request, response) {

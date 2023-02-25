@@ -113,7 +113,7 @@ fs.readFile(filename,Encoding,(err,data)=>{
 })
 
 
-C. Updateing file 
+C. Updating file 
 
 fs.appendFile(filename, data, (err)=>{
     console.log(message);
@@ -164,4 +164,37 @@ it allows to access data from other origin
 
 
 Authentication & Authorization:
+
+1. login (fetch) = POST method - since credentials validation are to be done 
+2. Token needs to be stored under local storages/ cookies .,
+3. Hashing is one-way function to store data
+
+it is not possible to reverse the data after hashing 
+
+
+Localstorage vs Cookies 
+
+HASHING:
+
+* checksum
+
+- it returns a 10-digit number 
+- file size will be around 1MB
+
+Dictionary attack
+
+Developer mindset 
+
+
+Salting - adding random text to the password and hashing 
+
+
+package - Bcrypt - salting & hashing 
+
+
+Form validation - for passwords : 
+
+NodeJS or ReactJS ??
+
+
 
