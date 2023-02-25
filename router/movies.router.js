@@ -4,9 +4,7 @@ import { getAllMovies, getMovieById, createNewMovie, deleteMoviebyId, UpdateMovi
 const router = express.Router();
 
 router.get("/", async function (request, response) {
-  //FindCursor error will show -> pagination(20) by default.
-  // Convert the cursor into an array.
-  //toArray() method to be used
+  
   const movie = await getAllMovies();
   // console.log(movie);
   response.send(movie);
