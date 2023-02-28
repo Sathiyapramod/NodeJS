@@ -37,7 +37,7 @@ userRouter.post("/login", async (request, response) => {
   } else {
     // console.log(data);
     const storedPassword = data.password;
-    const ispasswordcheck = bcrypt.compare(password, storedPassword);
+    const ispasswordcheck = await bcrypt.compare(password, storedPassword);
     // console.log(ispasswordcheck);
     if (ispasswordcheck) {
       const token = jwt.sign({ id: data._id }, process.env.SECRET_KEY);
