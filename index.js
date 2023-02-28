@@ -6,16 +6,16 @@ dotenv.config();
 import express from "express"; //Inside the package.json file, change the "Type" : "module" instead of "commonjs"
 
 import { MongoClient } from "mongodb"; // As a part of using MongoDB , inorder to fetch data locally
+import { ObjectId } from "mongodb";
 
 import cors from "cors";
 
 import Router from "./router/movies.router.js"; //As a part of express.Router()
 import userRouter from "./router/users.router.js"; //As a part of express.Router()
 
-
 const app = express(); //default Syntax
 
-console.log(process.env.MONGO_URL); //env stands for environment variables
+// console.log(process.env.MONGO_URL); //env stands for environment variables
 
 //To avoid adding on every API, app.use() method declares it similar to globally
 app.use(express.json()); //middleware - intercept - converting body to json() //inbuilt-middleware - include express.json()
@@ -48,7 +48,7 @@ app.get("/movies", async function (request, response) {
     .collection("movies")
     .find({})
     .toArray(); //toArray() method to be used // Convert the Database into an array.
-  console.log(movie);
+  // console.log(movie);
   response.send(movie);
 });
 
@@ -58,7 +58,7 @@ app.get("/movies/:id", async function (request, response) {
     .db("B42WD")
     .collection("movies")
     .findOne({ id: id });
-  console.log(movie);
+  // console.log(movie);
   // const movie = movies.find((movie) => {
   //   return movie.id === id;
   // });
@@ -73,7 +73,7 @@ app.post("/movies", async function (request, response) {
     .db("B42WD")
     .collection("movies")
     .insertMany(movie);
-  console.log(result);
+  // console.log(result);
   response.send(result);
 });
 
@@ -97,7 +97,7 @@ app.delete("/movies/:id", async (request, response) => {
 app.put("/movies/:id", async (request, response) => {
   const { id } = request.params;
   const movie = request.body;
-  console.log(movie, id);
+  // console.log(movie, id);
   const result = await client
     .db("B42WD")
     .collection("movies")

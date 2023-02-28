@@ -196,5 +196,28 @@ Form validation - for passwords :
 
 NodeJS or ReactJS ??
 
+JWT token:
 
 
+unique value ,
+secret value,
+secret_key to be given in .env
+
+x-auth-token;
+
+
+Query-filter:
+
+inside query parrams:
+
+e.g.,
+name:interstellar
+
+request.query
+It accepts only string as value inside the params 
+
+getAllmovies(request.query){
+    ...
+    findAll(request.query)
+    ...
+}

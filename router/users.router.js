@@ -1,6 +1,8 @@
 import express from "express";
-import { createUser } from "../service/users.service.js";
+import { client } from "../index.js";
+import { createUser, userfromDB } from "../service/users.service.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const userRouter = express.Router();
 
@@ -8,11 +10,10 @@ async function generateHashedPasswords(password) {
   const no_of_rounds = 10;
   const salt = await bcrypt.genSalt(no_of_rounds); //salting process will take some time
   const hashedPassword = await bcrypt.hash(password, salt); // hashing process will take some time
-  console.log(salt);
-  console.log(hashedPassword);
+  // console.log(salt);
+  // console.log(hashedPassword);
   return hashedPassword;
 }
-generateHashedPasswords("bamboo");
 
 userRouter.post("/signup", async function (request, response) {
   const { username, password } = request.body;
@@ -22,9 +23,28 @@ userRouter.post("/signup", async function (request, response) {
     username: username,
     password: hashedPassword,
   });
-  // console.log(result);
+  console.log(result);
+  result
+    ? response.send(result)
+    : response.status(404).send({ message: "failed" });
+});
 
-  result ? response.send(result) : response.status(404).send({"message":"failed"})
+userRouter.post("/login", async (request, response) => {
+  const { username, password } = request.body;
+  const data = await userfromDB(username);
+  if (!data) {
+    response.send({ message: "Invalid credentials " });
+  } else {
+    // console.log(data);
+    const storedPassword = data.password;
+    const ispasswordcheck = bcrypt.compare(password, storedPassword);
+    // console.log(ispasswordcheck);
+    if (ispasswordcheck) {
+      const token = jwt.sign({ id: data._id }, process.env.SECRET_KEY);
+      response.send({ message: "Success", token: token });
+      // response.send({"message":"Success"});
+    } else response.send({ message: "Failure" });
+  }
 });
 
 export default userRouter;
