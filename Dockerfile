@@ -1,5 +1,7 @@
 FROM node:latest
 
+WORKDIR /back_end
+
 COPY . .
 
 RUN npm install 
