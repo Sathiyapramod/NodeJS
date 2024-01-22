@@ -108,4 +108,4 @@ app.put("/movies/:id", async (request, response) => {
     : response.status(404).send({ message: "Movie updated successfully" });
 });
 
-app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
+app.listen(PORT, () => console.log(`The server started on: ${PORT} ✨✨`));
