@@ -16,7 +16,12 @@ pipeline {
                          echo "jsonResponse ${jsonResponse}"
 
                          def coveragePercentage = jsonResponse.component.measures[0].value 
-                         echo "Coverage Percentage: $coveragePercentage%"
+                         def bugs = jsonResponse.component.measures[1].value 
+                         def code_smells = jsonResponse.component.measures[2].value
+
+                         echo "code_smells : ${code_smells}"
+                         echo "bugs:${bugs}"
+                         echo "coveragePercentage${coveragePercentage}"
                     }
                     
                }
