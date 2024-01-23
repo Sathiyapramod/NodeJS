@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurperClassic
+// import groovy.json.JsonSlurperClassic
 
 pipeline {
      agent any 
@@ -10,9 +10,10 @@ pipeline {
                          def scanReport = sh(script:'sonar-scanner',requestStatus:true)
                          if (status != 0) {
                                   echo "Error: Command exited with status ${status}"
-                         } else {
+                         } 
+                         else {
                               echo "Command executed successfully"
-                              def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=sathiyapramod22&metricKeys=coverage'", returnStdout:true).trim()
+                              def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=sathiyapramod22&metricKeys=bugs'")
                               echo "${apiURL}"
 
                               // def jsonSlurper = new JsonSlurperClassic()
