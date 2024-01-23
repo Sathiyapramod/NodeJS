@@ -3,11 +3,8 @@ pipeline {
      stages {
           stage('Build'){
                steps {
-                    echo 'Sonar Cloud Validation.,!'
-                    script {
-                         def validationScript = sh(script:'sonar-scanner',returnStdout: true).trim()
-                         echo '${validationScript}'
-                    }
+                    def myValidation = sh(script:'sonar-scanner')
+                    echo '${myValidation}'
                }
           }
      }
