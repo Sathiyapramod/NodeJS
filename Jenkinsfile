@@ -6,7 +6,7 @@ pipeline {
                     echo 'Hello World..!'
                     // sh 'sonar-scanner'
                     script {
-                    def sonarOutput = sh(script: 'sonar-scanner -Dsonar.showProfiling=true ', returnStdout: true).trim()
+                    def sonarOutput = sh(script: 'sonar-scanner', returnStdout: true).trim()
 
                     def bugs = sonarOutput =~ /Bugs:[^0-9]*([0-9]+)/
                     def codeSmells = sonarOutput =~ /Code Smells:[^0-9]*([0-9]+)/
