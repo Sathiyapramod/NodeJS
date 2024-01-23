@@ -7,7 +7,7 @@ pipeline {
                steps {
                     echo 'hello world'
                     script {
-                         def scanReport = sh(script:'sonar-scanner',requestStatus:true)
+                         def scanReport = sh(script:'sonar-scanner',returnStatus: true)
                          echo "${scanReport}"
                          // if (scanReport != 0) {
                          //          echo "Error: Command exited with status ${status}"
