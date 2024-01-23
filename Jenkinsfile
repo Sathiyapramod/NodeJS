@@ -8,7 +8,7 @@ pipeline {
                     echo 'hello world'
                     sh 'sonar-scanner'
                     script {
-                         def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=sathiyapramod22&metricKeys=coverage'", returnStdout:true).trim()
+                         def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=sathiyapramod22&metricKeys=bugs'", returnStdout:true).trim()
                           // echo "list of bugs - ${apiURL}"
                          def jsonSlurper = new JsonSlurperClassic()
                          def jsonResponse = jsonSlurper.parseText(apiURL)
