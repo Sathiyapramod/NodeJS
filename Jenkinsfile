@@ -1,4 +1,4 @@
-// import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurperClassic
 
 pipeline {
      agent any 
@@ -17,11 +17,11 @@ pipeline {
                               def apiURL = sh(script:"curl -s 'https://sonarcloud.io/api/measures/component?componentKey=sathiyapramod22&metricKeys=bugs'")
                               echo "${apiURL}"
 
-                              // def jsonSlurper = new JsonSlurperClassic()
-                              // def jsonResponse = jsonSlurper.parseText(apiURL)
+                              def jsonSlurper = new JsonSlurperClassic()
+                              def jsonResponse = jsonSlurper.parseText(apiURL)
 
-                              // def coveragePercentage = jsonResponse.component.measures[0].value 
-                              // echo "Coverage Percentage: $coveragePercentage%"
+                              def coveragePercentage = jsonResponse.component.measures[0].value 
+                              echo "Coverage Percentage: $coveragePercentage%"
                          } 
                     }
                     
