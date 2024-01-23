@@ -8,7 +8,7 @@ pipeline {
                     echo 'hello world'
                     script {
                          def scanReport = sh(script:'sonar-scanner',requestStatus:true)
-                         if (status != 0) {
+                         if (scanReport != 0) {
                                   echo "Error: Command exited with status ${status}"
                          } 
                          else {
