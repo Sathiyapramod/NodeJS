@@ -3,8 +3,10 @@ pipeline {
      stages {
           stage('Build'){
                steps {
-                    def myValidation = sh(script:'sonar-scanner')
+                    script {
+                         def myValidation = sh(script:'sonar-scanner')
                     echo '${myValidation}'
+                    }
                }
           }
      }
