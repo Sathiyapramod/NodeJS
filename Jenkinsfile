@@ -6,7 +6,7 @@ pipeline {
           stage('Build'){
                steps {
                     echo 'hello world'
-                    sh 'sonar-scanner'
+                    // sh 'sonar-scanner'
                     script {
                          def validate = sh(returnStatus: true, script:"sonar-scanner")
                          if(validate != 0) {
