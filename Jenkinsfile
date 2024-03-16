@@ -1,11 +1,13 @@
 pipeline {
-    agent {
-        docker {image 'node:16-alpine'}
-    }
+    agent {dockerfile true} 
     stages {
-        stage('Test') {
+        stage('Test'){
             steps {
-                sh 'node --version'
+                sh '''
+                node --version
+                git --version
+                curl --version
+                '''
             }
         }
     }
