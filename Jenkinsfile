@@ -13,10 +13,6 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Development Run'){
-            steps {
-                sh 'npm run dev'
-            }
-        }
+       
     }
 }
